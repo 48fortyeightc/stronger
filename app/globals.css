@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #07080a;
+  --foreground: #f5f7fb;
+  --muted: #9aa3b2;
+  --line: rgba(255, 255, 255, 0.08);
+  --panel: rgba(24, 26, 32, 0.72);
+  --panel-strong: rgba(16, 18, 24, 0.82);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --life: #b5ff52;
+  --love: #ff5d8c;
+  --career: #57d4ff;
+  --amber: #ffb454;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(87, 212, 255, 0.14), transparent 24%),
+    radial-gradient(circle at top right, rgba(255, 93, 140, 0.12), transparent 20%),
+    radial-gradient(circle at bottom center, rgba(181, 255, 82, 0.08), transparent 22%),
+    linear-gradient(180deg, #090a0d 0%, #0b0d11 48%, #090a0d 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+::selection {
+  background: rgba(87, 212, 255, 0.2);
+}
+
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(28px) saturate(135%);
+  -webkit-backdrop-filter: blur(28px) saturate(135%);
+}
+
+.panel-strong {
+  background: var(--panel-strong);
+  backdrop-filter: blur(28px) saturate(135%);
+  -webkit-backdrop-filter: blur(28px) saturate(135%);
+}
+
+.glass-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 24px 80px rgba(0, 0, 0, 0.24);
 }

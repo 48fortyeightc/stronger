@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# stronger
 
-## Getting Started
+`stronger` 是一个单页滚动式的 AI 成长网站，帮助用户聚焦方向、执行关键行动，并在 AI 的陪伴下完成成长闭环。
 
-First, run the development server:
+## 技术栈
+
+- Next.js 16
+- TypeScript
+- Tailwind CSS 4
+- Recharts
+- OpenAI SDK（通过兼容接口接入千问）
+
+## 本地运行
+
+1. 安装依赖
+
+```bash
+npm install
+```
+
+2. 复制环境变量文件
+
+```bash
+cp .env.example .env.local
+```
+
+3. 填写 `QWEN_API_KEY`
+
+4. 启动开发环境
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 主要能力
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- 单页大仪表盘
+- 首次使用弹窗引导
+- 三条主线状态扫描：生命 / 爱 / 事业
+- 当前 30 天目标聚焦
+- 今日关键行动管理
+- AI 聚焦、安排今天、复盘今天、周总结
+- 本周闭环和趋势展示
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 部署建议
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 使用阿里云 ECS
+- Nginx 反向代理到 `next start`
+- PM2 维持 Node 进程
+- 环境变量只放服务器，不进仓库
