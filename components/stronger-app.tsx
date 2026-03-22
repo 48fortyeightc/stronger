@@ -14,6 +14,7 @@ import {
   Zap,
 } from "lucide-react";
 import { CalendarGrid } from "@/components/dashboard/calendar-grid";
+import { CountdownMiniCalendar } from "@/components/dashboard/countdown-mini-calendar";
 import { HeatmapGrid } from "@/components/dashboard/heatmap-grid";
 import { LifeLineBars } from "@/components/dashboard/life-line-bars";
 import { MetricSparkBars } from "@/components/dashboard/metric-sparkbars";
@@ -208,25 +209,7 @@ export function StrongerApp({ initialState }: { initialState: AppState }) {
           <Card className={cn("xl:col-span-8", themeCard(isLight))}>
             <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[1.14fr_0.86fr] lg:items-start">
               <div className="space-y-10">
-                <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
-                    {[appState.goal.yearTheme, appState.goal.phaseLabel, appState.goal.weekLabel].map((tag) => (
-                      <Badge key={tag} className={isLight ? "border-slate-200/80 bg-slate-900/[0.03] text-slate-600" : "border-white/10 bg-white/[0.03] text-white/60"}>
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className={cn("text-xs font-medium uppercase tracking-[0.22em]", isLight ? "text-slate-500" : "text-white/38")}>
-                    当前阶段目标
-                  </div>
-                  <h1 className={cn("text-4xl font-semibold leading-[1.06] tracking-[-0.05em] sm:text-5xl", isLight ? "text-slate-950" : "text-white")}>
-                    {appState.goal.title}
-                  </h1>
-                  <p className={cn("max-w-xl text-sm leading-7", isLight ? "text-slate-500" : "text-white/48")}>
-                    {appState.goal.reason}
-                  </p>
-                </div>
-
+                <CountdownMiniCalendar isLight={isLight} />
                 <div className="grid gap-4 md:grid-cols-[1.08fr_0.92fr]">
                   <div className={cn("rounded-[28px] p-5", subCard(isLight))}>
                     <div className={cn("mb-4 text-xs font-semibold uppercase tracking-[0.22em]", isLight ? "text-slate-500" : "text-white/38")}>生命 / 爱 / 事业得分</div>
