@@ -207,67 +207,24 @@ export function StrongerApp({ initialState }: { initialState: AppState }) {
         <main className="grid gap-5 xl:grid-cols-12">
           <Card className={cn("xl:col-span-8", themeCard(isLight))}>
             <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[1.14fr_0.86fr] lg:items-start">
-              <div className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  {[appState.goal.yearTheme, appState.goal.phaseLabel, appState.goal.weekLabel].map((tag) => (
-                    <Badge key={tag} className={isLight ? "border-slate-200/80 bg-slate-900/[0.03] text-slate-600" : "border-white/10 bg-white/[0.03] text-white/60"}>
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className={cn("rounded-[30px] p-5", subCard(isLight))}>
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <div className={cn("text-xs font-semibold uppercase tracking-[0.22em]", isLight ? "text-slate-500" : "text-white/38")}>
-                        倒数日
-                      </div>
-                      <div className={cn("mt-2 text-2xl font-semibold tracking-[-0.04em]", isLight ? "text-slate-950" : "text-white")}>
-                        三月日历
-                      </div>
-                    </div>
-                    <Badge className={isLight ? "border-slate-200/80 bg-slate-900/[0.03] text-slate-600" : "border-white/10 bg-white/[0.03] text-white/60"}>
-                      {appState.goal.countdownDays} 天
-                    </Badge>
-                  </div>
-
-                  <div className="mt-4">
-                    <CalendarGrid
-                      days={appState.calendarDays}
-                      selectedDate={selectedDate}
-                      onSelect={setSelectedDate}
-                      isLight={isLight}
-                    />
-                  </div>
-
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {appState.countdowns.slice(0, 2).map((item) => (
-                      <div
-                        key={item.id}
-                        className={cn(
-                          "rounded-[22px] border p-4",
-                          isLight ? "border-slate-200/80 bg-white/86" : "border-white/8 bg-white/[0.03]",
-                        )}
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="min-w-0">
-                            <div className={cn("text-xs uppercase tracking-[0.18em]", isLight ? "text-slate-500" : "text-white/38")}>
-                              {item.tone === "focus" ? "阶段倒数" : item.tone === "urgent" ? "重要倒数" : "常规倒数"}
-                            </div>
-                            <div className={cn("mt-1 text-sm font-medium", isLight ? "text-slate-900" : "text-white")}>
-                              {item.title}
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <div className={cn("text-3xl font-semibold tracking-[-0.06em]", isLight ? "text-slate-950" : "text-white")}>
-                              {item.daysLeft}
-                            </div>
-                            <div className={cn("text-[11px]", isLight ? "text-slate-500" : "text-white/38")}>天</div>
-                          </div>
-                        </div>
-                      </div>
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
+                    {[appState.goal.yearTheme, appState.goal.phaseLabel, appState.goal.weekLabel].map((tag) => (
+                      <Badge key={tag} className={isLight ? "border-slate-200/80 bg-slate-900/[0.03] text-slate-600" : "border-white/10 bg-white/[0.03] text-white/60"}>
+                        {tag}
+                      </Badge>
                     ))}
                   </div>
+                  <div className={cn("text-xs font-medium uppercase tracking-[0.22em]", isLight ? "text-slate-500" : "text-white/38")}>
+                    当前阶段目标
+                  </div>
+                  <h1 className={cn("text-4xl font-semibold leading-[1.06] tracking-[-0.05em] sm:text-5xl", isLight ? "text-slate-950" : "text-white")}>
+                    {appState.goal.title}
+                  </h1>
+                  <p className={cn("max-w-xl text-sm leading-7", isLight ? "text-slate-500" : "text-white/48")}>
+                    {appState.goal.reason}
+                  </p>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-[1.08fr_0.92fr]">
